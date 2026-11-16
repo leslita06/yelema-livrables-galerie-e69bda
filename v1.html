@@ -1,0 +1,251 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Livrables, proposition galerie</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Funnel+Display:wght@600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--b:#E60949;--b-ink:#B8073A;--tint:#FDE8EE;--ink:#1B1530;--ink2:#4A4660;--ink3:#7A778C;--line:#ECEAF2;--soft:#F5F4F9;--bg:#fff}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Inter,system-ui,sans-serif;color:var(--ink);background:var(--bg);-webkit-font-smoothing:antialiased}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+.i{width:20px;height:20px;display:inline-block;background:currentColor;-webkit-mask:var(--m) center/contain no-repeat;mask:var(--m) center/contain no-repeat;flex:none}
+.wrap{max-width:1100px;margin:0 auto;padding:22px 32px 80px}
+.back{display:inline-flex;align-items:center;gap:6px;color:var(--ink3);font-size:14px;font-weight:500;min-height:36px}
+.hd{display:flex;align-items:center;gap:12px;margin-top:8px}
+h1{font-family:"Funnel Display",Inter,sans-serif;font-size:32px;font-weight:700;letter-spacing:-.02em;flex:1}
+.ib{width:44px;height:44px;border-radius:50%;display:grid;place-items:center;color:var(--ink2)}
+.ib:hover{background:var(--soft)}
+/* onglets */
+.seg{display:flex;gap:4px;background:var(--soft);border-radius:999px;padding:4px;margin-top:18px;width:max-content}
+.seg button{height:38px;padding:0 20px;border-radius:999px;font-size:14px;font-weight:600;color:var(--ink3)}
+.seg button[aria-selected=true]{background:#fff;color:var(--ink);box-shadow:0 1px 3px rgba(27,21,48,.08)}
+.seg small{font-weight:500;color:var(--ink3);margin-left:4px}
+/* Experts */
+.who{display:flex;gap:14px;margin-top:18px;overflow-x:auto;scrollbar-width:none;padding-bottom:2px}
+.who::-webkit-scrollbar{display:none}
+.who button{display:flex;flex-direction:column;align-items:center;gap:6px;width:60px;flex:none;font-size:12px;font-weight:500;color:var(--ink2)}
+.who .ph{width:52px;height:52px;border-radius:50%;padding:2px;border:2px solid transparent}
+.who .ph>img,.who .ph>span{width:100%;height:100%;border-radius:50%;object-fit:cover;display:grid;place-items:center;background:var(--soft);color:var(--ink2)}
+.who button[aria-pressed=true] .ph{border-color:var(--b)}
+.who button[aria-pressed=true]{color:var(--ink);font-weight:600}
+/* groupes */
+.grp{margin-top:26px}
+.grp h2{font-size:13px;font-weight:600;color:var(--ink3);margin-bottom:10px}
+.grid{display:grid;grid-template-columns:repeat(6,1fr);gap:6px}
+.t{position:relative;aspect-ratio:1;overflow:hidden;border-radius:10px;background:var(--soft);display:block;width:100%;text-align:left}
+.t .art{position:absolute;inset:0}
+.t .ov{position:absolute;left:0;right:0;bottom:0;height:46%;background:linear-gradient(transparent,rgba(0,0,0,.55));pointer-events:none}
+.t .meta{position:absolute;left:8px;bottom:7px;display:flex;align-items:center;gap:4px;color:#fff;font-size:12px;font-weight:600}
+.t .meta .i{width:15px;height:15px}
+.t .play{position:absolute;left:50%;top:46%;width:40px;height:40px;margin:-20px 0 0 -20px;border-radius:50%;background:rgba(0,0,0,.35);display:grid;place-items:center;color:#fff}
+.t .play .i{width:18px;height:18px}
+.t .by{position:absolute;right:7px;bottom:7px;width:22px;height:22px;border-radius:50%;border:1.5px solid #fff;object-fit:cover}
+.t .nw{position:absolute;right:8px;top:8px;width:10px;height:10px;border-radius:50%;background:var(--b);border:2px solid #fff}
+.t .busy{position:absolute;inset:0;background:rgba(255,255,255,.88);backdrop-filter:blur(3px);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;font-size:12px;font-weight:600;color:var(--ink2)}
+.spin{width:26px;height:26px;border-radius:50%;border:3px solid var(--line);border-top-color:var(--b);animation:r 1s linear infinite}
+@keyframes r{to{transform:rotate(1turn)}}
+/* vignettes dessinées */
+.a-promo{background:var(--b);color:#fff;padding:12%;display:flex;flex-direction:column;justify-content:space-between}
+.a-promo b{font-family:"Funnel Display";font-size:clamp(18px,2.6vw,34px);line-height:.95;position:relative;z-index:1}
+.a-promo small{font-size:clamp(9px,1vw,12px);font-weight:600;opacity:.9}
+.a-promo .bag{position:absolute;right:9%;top:9%;width:26%;aspect-ratio:3/4;background:#fff;border-radius:6px 6px 10px 10px;box-shadow:0 4px 10px rgba(0,0,0,.2)}
+.a-promo .bag:after{content:"";position:absolute;left:15%;right:15%;top:30%;height:28%;background:#F7C948;border-radius:4px}
+.a-vid{background:radial-gradient(circle at 30% 30%,#8a6a4a,#2b1d14)}
+.a-vid:before{content:"";position:absolute;left:12%;right:12%;bottom:22%;height:30%;background:repeating-linear-gradient(90deg,#c9a77a 0 14%,#a7835a 14% 18%);opacity:.7;border-radius:4px}
+.a-vid2{background:linear-gradient(160deg,#f2d6c4,#c98b6b)}
+.a-vid2:before{content:"";position:absolute;left:0;right:0;bottom:0;height:42%;background:linear-gradient(transparent,#7d4a33)}
+.a-cream{background:#FFF4E2;padding:12%;color:#7a3b12}
+.a-cream b{font-family:"Funnel Display";font-size:clamp(12px,1.6vw,20px);line-height:1}
+.a-cream .bowl{position:absolute;left:22%;right:22%;bottom:10%;height:28%;background:#fff;border-radius:0 0 999px 999px;box-shadow:inset 0 10px 0 #f3e3c6}
+.a-cream .bowl:before{content:"";position:absolute;left:12%;right:12%;top:-12%;height:40%;border-radius:50%;background:radial-gradient(circle,#fbfbf6 40%,#e9dfc8)}
+.a-slide{background:#fff;padding:10%;border:1px solid var(--line)}
+.a-slide b{display:block;font-size:clamp(10px,1.2vw,14px);color:var(--ink);line-height:1.1}
+.a-slide i{display:block;width:30%;height:4px;background:var(--b);margin:6px 0 10px;border-radius:2px}
+.a-slide .bars{position:absolute;left:10%;right:10%;bottom:14%;height:46%;display:flex;align-items:flex-end;gap:7%}
+.a-slide .bars span{flex:1;background:var(--b);border-radius:3px 3px 0 0;opacity:.85}
+.a-slide .bars span:nth-child(odd){background:#F2A0B6}
+.a-story{background:linear-gradient(180deg,#1E7A4B,#0F4A2C);color:#fff;padding:12%}
+.a-story b{font-family:"Funnel Display";font-size:clamp(16px,2.6vw,30px);line-height:.95}
+.a-story .sack{position:absolute;left:30%;right:30%;bottom:10%;height:44%;background:#F3EFE6;border-radius:8px 8px 14px 14px}
+.a-story .sack:after{content:"5 kg";position:absolute;left:0;right:0;top:38%;text-align:center;font-weight:700;color:#0F4A2C;font-size:clamp(10px,1.4vw,16px)}
+.a-cal{background:#fff;padding:9%;border:1px solid var(--line)}
+.a-cal b{font-size:clamp(9px,1.1vw,13px)}
+.a-cal .d{position:absolute;left:9%;right:9%;bottom:9%;top:30%;display:grid;grid-template-columns:repeat(7,1fr);gap:3px}
+.a-cal .d span{background:var(--soft);border-radius:2px}
+.a-cal .d span.on{background:var(--b)} .a-cal .d span.on2{background:#F7C948}
+.a-org{background:#F6F2FF;padding:10%}
+.a-org b{font-size:clamp(9px,1.1vw,13px);color:#3b2a7a}
+.a-org .n{position:absolute;width:22%;height:12%;background:#fff;border:2px solid #8D68FA;border-radius:4px}
+.a-li{background:#0A66C2;color:#fff;padding:12%}
+.a-li b{font-family:"Funnel Display";font-size:clamp(14px,2.2vw,26px);line-height:1}
+.a-li small{display:block;margin-top:6px;font-size:clamp(8px,1vw,12px);opacity:.85}
+.a-pack{background:linear-gradient(135deg,#FCE3B0,#F3B95F)}
+.a-pack:before{content:"";position:absolute;left:28%;right:28%;top:14%;bottom:12%;background:var(--b);border-radius:10px 10px 6px 6px;box-shadow:6px 8px 0 rgba(0,0,0,.08)}
+.a-pack:after{content:"UNIFOOD";position:absolute;left:28%;right:28%;top:40%;text-align:center;color:#fff;font-weight:800;font-size:clamp(8px,1vw,12px);letter-spacing:.06em}
+.a-line{background:#fff;border:1px solid var(--line);padding:10%}
+.a-line b{font-size:clamp(9px,1.1vw,13px)}
+.a-line svg{position:absolute;left:8%;right:8%;bottom:12%;width:84%;height:52%}
+.a-aff{background:#2B1D52;color:#fff;padding:12%}
+.a-aff b{font-family:"Funnel Display";font-size:clamp(14px,2.2vw,26px);line-height:1}
+/* listes Docs et Liens */
+.list{border-radius:14px;background:#fff}
+.row{display:flex;align-items:center;gap:14px;width:100%;text-align:left;padding:12px 4px;min-height:72px;box-shadow:inset 0 -1px 0 var(--line)}
+.row:last-child{box-shadow:none}
+.row .tx{flex:1;min-width:0}
+.row .tx b{display:block;font-size:15px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.row .tx small{display:flex;align-items:center;gap:6px;font-size:13px;color:var(--ink3);margin-top:3px}
+.row .tx small img{width:18px;height:18px;border-radius:50%;object-fit:cover}
+.pg{width:46px;height:58px;border-radius:6px;background:#fff;border:1px solid var(--line);position:relative;flex:none;overflow:hidden;padding:7px 6px}
+.pg i{display:block;height:3px;border-radius:2px;background:#DAD8E3;margin-bottom:4px}
+.pg i:first-child{width:70%;background:var(--ink2)}
+.pg em{position:absolute;left:0;right:0;bottom:0;height:16px;font:700 9px/16px Inter;text-align:center;color:#fff;font-style:normal}
+.f-pdf em{background:#E5484D}.f-doc em{background:#2E6BE6}.f-xls em{background:#1F9254}.f-gdoc em{background:#4285F4}
+.lk{width:58px;height:58px;border-radius:10px;flex:none;background:var(--soft);display:grid;place-items:center;overflow:hidden;position:relative}
+.lk img{width:26px;height:26px}
+.lk .i{width:26px;height:26px}
+.row .go{color:var(--ink3)}
+/* visionneuse */
+.vw{position:fixed;inset:0;background:#0d0b14;color:#fff;display:none;flex-direction:column;z-index:9}
+.vw.on{display:flex}
+.vw .top{display:flex;align-items:center;gap:12px;padding:14px 16px}
+.vw .top img{width:38px;height:38px;border-radius:50%;object-fit:cover}
+.vw .top .tx{flex:1;min-width:0}
+.vw .top b{display:block;font-size:15px}
+.vw .top small{font-size:13px;color:#b9b6c8}
+.vw .ib{color:#fff}
+.vw .ib:hover{background:rgba(255,255,255,.1)}
+.vw .st{flex:1;display:grid;place-items:center;overflow:hidden}
+.vw .st .t{width:130px;border-radius:4px;transform-origin:center}
+.vw .bot{display:flex;justify-content:center;gap:8px;padding:10px 12px 28px}
+.vw .bot button{flex:0 1 120px;min-height:64px;border-radius:14px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;font-size:13px;font-weight:600}
+.vw .bot button:hover{background:rgba(255,255,255,.08)}
+.vw .bot .i{width:22px;height:22px}
+.toast{position:fixed;left:50%;bottom:28px;transform:translateX(-50%);background:var(--ink);color:#fff;padding:12px 18px;border-radius:12px;font-size:14px;display:none;z-index:10}
+@media (max-width:640px){
+  .wrap{padding:10px 0 60px}
+  .back,.hd,.seg,.who,.grp h2,.list{margin-left:16px;margin-right:16px}
+  h1{font-size:26px}
+  .seg{width:auto;display:flex}.seg button{flex:1;padding:0 8px}
+  .grid{grid-template-columns:repeat(3,1fr);gap:2px}
+  .t{border-radius:0}
+  .grp{margin-top:20px}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <button class="back" onclick="toast('Retour à l’accueil')"><span class="i" style="--m:url(https://cdn.jsdelivr.net/npm/lucide-static@0.460.0/icons/chevron-left.svg)"></span>Accueil</button>
+  <div class="hd"><h1>Livrables</h1>
+    <button class="ib" aria-label="Rechercher" onclick="toast('Recherche dans les livrables')"><span class="i" style="--m:url(https://cdn.jsdelivr.net/npm/lucide-static@0.460.0/icons/search.svg)"></span></button>
+  </div>
+  <div class="seg" role="tablist">
+    <button role="tab" data-tab="medias" aria-selected="true">Médias<small>15</small></button>
+    <button role="tab" data-tab="docs" aria-selected="false">Docs<small>6</small></button>
+    <button role="tab" data-tab="liens" aria-selected="false">Liens<small>5</small></button>
+  </div>
+  <div class="who" id="who"></div>
+  <div id="body"></div>
+</div>
+<div class="vw" id="vw"></div>
+<div class="toast" id="toast"></div>
+<script>
+const IC = n => `<span class="i" style="--m:url(https://cdn.jsdelivr.net/npm/lucide-static@0.460.0/icons/${n}.svg)"></span>`;
+const X = {fatima:"Fatima",koffi:"Koffi",kouassi:"Kouassi",djeneba:"Djénéba",mamadou:"Mamadou",adjoua:"Adjoua"};
+const ph = x => `img/${x}.jpg`;
+const ART = {
+ promo:`<div class="art a-promo"><small>UNIFOOD</small><b>Prestige<br>-15 %</b><small>jusqu’au 30/11</small></div>`,
+ promo2:`<div class="art a-promo" style="background:#F7C948;color:#5a1630"><small>UNIFOOD</small><b>Bonne fête<br>maman</b><small>-10 % sur le riz</small></div>`,
+ vid:`<div class="art a-vid"></div>`,
+ vid2:`<div class="art a-vid2"></div>`,
+ cream:`<div class="art a-cream"><b>3 recettes<br>au riz parfumé</b><span class="bowl"></span></div>`,
+ slide:`<div class="art a-slide"><b>Bilan commercial<br>octobre</b><i></i><div class="bars"><span style="height:40%"></span><span style="height:62%"></span><span style="height:55%"></span><span style="height:80%"></span><span style="height:92%"></span></div></div>`,
+ story:`<div class="art a-story"><b>Nouveau<br>format</b><span class="sack"></span></div>`,
+ cal:`<div class="art a-cal"><b>Posts de novembre</b><div class="d">${Array.from({length:28},(_,i)=>`<span class="${[1,4,8,11,15,18,22,25].includes(i)?'on':[6,13,20].includes(i)?'on2':''}"></span>`).join("")}</div></div>`,
+ org:`<div class="art a-org"><b>Organigramme</b><span class="n" style="left:39%;top:30%"></span><span class="n" style="left:14%;top:58%"></span><span class="n" style="left:39%;top:58%"></span><span class="n" style="left:64%;top:58%"></span><span class="n" style="left:26%;top:80%"></span><span class="n" style="left:52%;top:80%"></span></div>`,
+ li:`<div class="art a-li"><b>Unifood<br>recrute</b><small>Responsable logistique, Abidjan</small></div>`,
+ pack:`<div class="art a-pack"></div>`,
+ line:`<div class="art a-line"><b>Trésorerie, 13 semaines</b><svg viewBox="0 0 100 50" preserveAspectRatio="none"><polyline fill="none" stroke="#E60949" stroke-width="2.5" points="0,38 12,34 24,36 36,26 48,28 60,18 72,22 84,12 100,8"/><polyline fill="none" stroke="#C9C6D6" stroke-width="2" stroke-dasharray="3 3" points="0,30 100,30"/></svg></div>`,
+ aff:`<div class="art a-aff"><b>Salon Agro<br>Abidjan</b></div>`,
+ slide2:`<div class="art a-slide"><b>Plan de prospection<br>Lagune</b><i></i><div class="bars"><span style="height:30%"></span><span style="height:45%"></span><span style="height:70%"></span><span style="height:58%"></span></div></div>`,
+};
+const MED = [
+ {g:"Cette semaine",x:"fatima",a:"promo",t:"Post Offre Prestige",d:"Aujourd’hui, 09:12",nw:1},
+ {g:"Cette semaine",x:"koffi",a:"aff",t:"Affiche Salon Agro",d:"Aujourd’hui",busy:1},
+ {g:"Cette semaine",x:"fatima",a:"vid",t:"Vidéo coulisses de l’usine",d:"Hier, 17:40",v:"0:42",nw:1},
+ {g:"Cette semaine",x:"kouassi",a:"slide",t:"Bilan commercial octobre",d:"Hier, 11:05",s:"14"},
+ {g:"Cette semaine",x:"fatima",a:"cream",t:"Carrousel 3 recettes",d:"Jeudi",s:"5"},
+ {g:"Cette semaine",x:"fatima",a:"cal",t:"Calendrier des posts",d:"Mercredi"},
+ {g:"Novembre",x:"fatima",a:"story",t:"Story nouveau format 5 kg",d:"8 nov."},
+ {g:"Novembre",x:"mamadou",a:"line",t:"Trésorerie 13 semaines",d:"7 nov."},
+ {g:"Novembre",x:"fatima",a:"vid2",t:"Témoignage client",d:"6 nov.",v:"1:05"},
+ {g:"Novembre",x:"koffi",a:"pack",t:"Maquette emballage",d:"5 nov."},
+ {g:"Novembre",x:"adjoua",a:"li",t:"Annonce LinkedIn",d:"4 nov."},
+ {g:"Novembre",x:"djeneba",a:"org",t:"Organigramme",d:"3 nov."},
+ {g:"Octobre",x:"kouassi",a:"slide2",t:"Plan de prospection Lagune",d:"29 oct.",s:"9"},
+ {g:"Octobre",x:"fatima",a:"promo2",t:"Post Fête des mères",d:"24 oct."},
+ {g:"Octobre",x:"koffi",a:"aff",t:"Affiche dégustation",d:"20 oct."},
+];
+const DOCS = [
+ {g:"Cette semaine",x:"djeneba",f:"pdf",t:"Rapport mensuel novembre",m:"PDF, 8 pages",d:"Aujourd’hui",nw:1},
+ {g:"Cette semaine",x:"kouassi",f:"doc",t:"Proposition commerciale Lagune Distribution",m:"Word, 6 pages",d:"Hier"},
+ {g:"Cette semaine",x:"mamadou",f:"xls",t:"Prévisionnel de trésorerie T1",m:"Excel, 3 onglets",d:"Mercredi"},
+ {g:"Novembre",x:"adjoua",f:"pdf",t:"Fiche de poste Responsable logistique",m:"PDF, 2 pages",d:"4 nov."},
+ {g:"Novembre",x:"djeneba",f:"gdoc",t:"Compte rendu du comité de direction",m:"Google Docs",d:"3 nov."},
+ {g:"Octobre",x:"kouassi",f:"pdf",t:"Contrat type distributeur",m:"PDF, 11 pages",d:"27 oct."},
+];
+const LINKS = [
+ {g:"Cette semaine",x:"kouassi",dom:"docs.google.com",ic:"presentation",col:"#F4B400",t:"Bilan commercial octobre",m:"Google Slides",d:"Hier",nw:1},
+ {g:"Cette semaine",x:"fatima",dom:"canva.com",t:"Visuels Offre Prestige",m:"Canva",d:"Jeudi"},
+ {g:"Novembre",x:"mamadou",dom:"docs.google.com",ic:"sheet",col:"#1E8E3E",t:"Suivi des encaissements",m:"Google Sheets",d:"7 nov."},
+ {g:"Novembre",x:"adjoua",dom:"linkedin.com",t:"Annonce Responsable logistique publiée",m:"LinkedIn",d:"4 nov."},
+ {g:"Octobre",x:"djeneba",dom:"drive.google.com",ic:"folder",col:"#4285F4",t:"Dossier Codir octobre",m:"Google Drive",d:"30 oct."},
+];
+let tab="medias", who="all";
+const who_ = () => ["all",...Object.keys(X)];
+function renderWho(){
+  document.getElementById("who").innerHTML = who_().map(k=>`<button aria-pressed="${who===k}" data-who="${k}"><span class="ph">${k==="all"?`<span>${IC("users")}</span>`:`<img src="${ph(k)}" alt="">`}</span>${k==="all"?"Tous":X[k]}</button>`).join("");
+}
+const groups = arr => { const o={}; arr.forEach((v,i)=>{(o[v.g]=o[v.g]||[]).push([v,i])}); return Object.entries(o); };
+function tile(v,i){
+  return `<button class="t" data-open="${i}" aria-label="${v.t}">${ART[v.a]}${(v.v||v.s)?'<span class="ov"></span>':''}
+   ${v.v?`<span class="play">${IC("play")}</span>`:""}${v.v?`<span class="meta">${IC("video")}${v.v}</span>`:v.s?`<span class="meta">${IC("gallery-horizontal-end")}${v.s}</span>`:""}
+   ${who==="all"?`<img class="by" src="${ph(v.x)}" alt="">`:""}${v.nw?'<span class="nw"></span>':""}
+   ${v.busy?`<span class="busy"><span class="spin"></span>En préparation</span>`:""}</button>`;
+}
+function render(){
+  renderWho();
+  const f = a => a.filter(v=>who==="all"||v.x===who);
+  const N={medias:f(MED).length,docs:f(DOCS).length,liens:f(LINKS).length};
+  document.querySelectorAll(".seg button").forEach(b=>{b.setAttribute("aria-selected",b.dataset.tab===tab);b.querySelector("small").textContent=N[b.dataset.tab]});
+  let h="";
+  if(tab==="medias") h = groups(f(MED)).map(([g,l])=>`<section class="grp"><h2>${g}</h2><div class="grid">${l.map(([v])=>tile(v,MED.indexOf(v))).join("")}</div></section>`).join("");
+  if(tab==="docs") h = groups(f(DOCS)).map(([g,l])=>`<section class="grp"><h2>${g}</h2><div class="list">${l.map(([v])=>`<button class="row" onclick="toast('Aperçu : ${v.t.replace(/'/g,"’")}')"><span class="pg f-${v.f}"><i></i><i></i><i></i><i></i><i style="width:60%"></i><em>${{pdf:"PDF",doc:"DOCX",xls:"XLSX",gdoc:"DOCS"}[v.f]}</em></span><span class="tx"><b>${v.t}</b><small><img src="${ph(v.x)}" alt="">${X[v.x]}, ${v.m}, ${v.d}</small></span>${v.nw?'<span class="nw" style="width:10px;height:10px;border-radius:50%;background:var(--b)"></span>':''}</button>`).join("")}</div></section>`).join("");
+  if(tab==="liens") h = groups(f(LINKS)).map(([g,l])=>`<section class="grp"><h2>${g}</h2><div class="list">${l.map(([v])=>`<button class="row" onclick="toast('Ouverture de ${v.dom}')"><span class="lk" ${v.ic?`style="background:${v.col};color:#fff"`:""}>${v.ic?IC(v.ic):`<img src="https://www.google.com/s2/favicons?domain=${v.dom}&sz=64" alt="">`}</span><span class="tx"><b>${v.t}</b><small><img src="${ph(v.x)}" alt="">${X[v.x]}, ${v.m}, ${v.d}</small></span><span class="go">${IC("external-link")}</span></button>`).join("")}</div></section>`).join("");
+  if(!h) h=`<p style="text-align:center;color:var(--ink3);padding:60px 16px;font-size:14px">Pas encore de livrable ici.</p>`;
+  document.getElementById("body").innerHTML=h;
+}
+function openV(i){
+  const v=MED[i], vw=document.getElementById("vw");
+  vw.innerHTML=`<div class="top"><button class="ib" data-close aria-label="Fermer">${IC("arrow-left")}</button><img src="${ph(v.x)}" alt=""><span class="tx"><b>${v.t}</b><small>${X[v.x]}, ${v.d}</small></span><button class="ib" aria-label="Plus" onclick="toast('Renommer, déplacer, supprimer')">${IC("ellipsis-vertical")}</button></div>
+   <div class="st"><div class="t" style="pointer-events:none">${ART[v.a]}</div></div>
+   <div class="bot"><button onclick="toast('Téléchargement lancé')">${IC("download")}Télécharger</button><button onclick="toast('Envoyer à…')">${IC("send")}Envoyer</button><button onclick="toast('Ouverture de la conversation avec ${X[v.x]}')">${IC("message-circle")}Conversation</button></div>`;
+  vw.classList.add("on");
+  const st=vw.querySelector(".st"), t=st.querySelector(".t"); t.style.transform=`scale(${Math.min(st.clientWidth,st.clientHeight*.92,720)/130})`;
+}
+let tt; function toast(m){const t=document.getElementById("toast");t.textContent=m;t.style.display="block";clearTimeout(tt);tt=setTimeout(()=>t.style.display="none",1800)}
+document.addEventListener("click",e=>{
+  const b=e.target.closest("button"); if(!b) return;
+  if(b.dataset.tab){tab=b.dataset.tab;render()}
+  else if(b.dataset.who){who=b.dataset.who;render()}
+  else if(b.dataset.open){if(!MED[+b.dataset.open].busy)openV(+b.dataset.open);else toast("Koffi y travaille encore")}
+  else if(b.hasAttribute("data-close")) document.getElementById("vw").classList.remove("on");
+});
+addEventListener("keydown",e=>{if(e.key==="Escape")document.getElementById("vw").classList.remove("on")});
+const q=new URLSearchParams(location.search); if(q.get("tab"))tab=q.get("tab"); if(q.get("who"))who=q.get("who");
+render(); if(q.get("vue")) openV(+q.get("vue"));
+</script>
+</body>
+</html>

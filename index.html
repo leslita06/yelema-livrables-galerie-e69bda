@@ -3,10 +3,10 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Livrables, proposition galerie</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
+<title>Livrables, proposition v2</title>
 <link href="https://fonts.googleapis.com/css2?family=Funnel+Display:wght@600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
+
 :root{--b:#E60949;--b-ink:#B8073A;--tint:#FDE8EE;--ink:#1B1530;--ink2:#4A4660;--ink3:#7A778C;--line:#ECEAF2;--soft:#F5F4F9;--bg:#fff}
 *{box-sizing:border-box;margin:0;padding:0}
 body{font-family:Inter,system-ui,sans-serif;color:var(--ink);background:var(--bg);-webkit-font-smoothing:antialiased}
@@ -90,10 +90,56 @@ h1{font-family:"Funnel Display",Inter,sans-serif;font-size:32px;font-weight:700;
 .a-line svg{position:absolute;left:8%;right:8%;bottom:12%;width:84%;height:52%}
 .a-aff{background:#2B1D52;color:#fff;padding:12%}
 .a-aff b{font-family:"Funnel Display";font-size:clamp(14px,2.2vw,26px);line-height:1}
-/* listes Docs et Liens */
+
+.wrap{max-width:1100px}
+/* en-tête d'Expert, comme dans l'app */
+.xh{display:flex;align-items:center;gap:12px;padding:6px 0 10px}
+.xh img{width:48px;height:48px;border-radius:50%;object-fit:cover}
+.xh b{display:block;font-size:17px}
+.xh small{font-size:13px;color:var(--ink3)}
+.xt{display:flex;gap:4px;overflow-x:auto;scrollbar-width:none;box-shadow:inset 0 -1px 0 var(--line)}
+.xt span{padding:10px 12px;font-size:14px;font-weight:600;color:var(--ink2);white-space:nowrap}
+.xt span.on{color:var(--b);box-shadow:inset 0 -2px 0 var(--b)}
+/* barre d'outils */
+.tb{display:flex;gap:8px;align-items:center;margin-top:16px}
+.sf{flex:1;display:flex;align-items:center;gap:8px;height:44px;border-radius:999px;background:var(--soft);padding:0 14px;color:var(--ink3);font-size:14px;min-width:0}
+.tg{display:flex;background:var(--soft);border-radius:999px;padding:3px}
+.tg button{width:40px;height:38px;border-radius:999px;display:grid;place-items:center;color:var(--ink3)}
+.tg button[aria-pressed=true]{background:#fff;color:var(--ink);box-shadow:0 1px 3px rgba(27,21,48,.08)}
+.sort{height:44px;padding:0 14px;border-radius:999px;background:var(--soft);font-size:13px;font-weight:600;color:var(--ink2);display:flex;align-items:center;gap:4px;white-space:nowrap}
+.dd{white-space:nowrap;height:44px;padding:0 12px 0 6px;border-radius:999px;border:1px solid var(--line);display:flex;align-items:center;gap:8px;font-size:14px;font-weight:600}
+.dd .st{display:flex}.dd .st img{width:28px;height:28px;border-radius:50%;border:2px solid #fff;margin-left:-8px;object-fit:cover}.dd .st img:first-child{margin-left:0}
+/* projets */
+.ph2{display:flex;align-items:baseline;justify-content:space-between;margin-top:22px}
+.ph2 h2{font-size:15px;font-weight:700}
+.ph2 small{font-size:13px;color:var(--ink3)}
+.pr{display:flex;gap:10px;overflow-x:auto;scrollbar-width:none;margin-top:10px;padding-bottom:2px}
+.pr::-webkit-scrollbar{display:none}
+.pc{flex:none;width:150px;text-align:left}
+.pc .mo{display:block;border-radius:12px;overflow:hidden;aspect-ratio:1;background:var(--soft);position:relative}
+.pc .mo .t{border-radius:0}
+.pc .mo .t{width:100%;height:100%}
+.pc b{display:block;font-size:14px;font-weight:600;margin-top:7px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.pc small{display:flex;align-items:center;gap:5px;font-size:12px;color:var(--ink3);margin-top:2px}
+.pc small img{width:16px;height:16px;border-radius:50%;object-fit:cover}
+.pc .nwb{position:absolute;top:6px;right:6px;background:var(--b);color:#fff;font-size:11px;font-weight:700;border-radius:999px;padding:2px 7px}
+.bar2{display:flex;align-items:center;gap:8px;margin-top:22px;flex-wrap:wrap}
+.chip{height:38px;padding:0 14px;border-radius:999px;font-size:13px;font-weight:600;color:var(--ink2);background:var(--soft)}
+.chip[aria-pressed=true]{background:var(--ink);color:#fff}
+.crumb{display:flex;align-items:center;gap:4px;margin-top:16px;font-size:15px}
+.crumb button{color:var(--ink3);font-weight:500;min-height:36px;display:inline-flex;align-items:center;gap:4px}
+.crumb b{font-weight:700}
+/* liste */
+.lrow{display:flex;align-items:center;gap:12px;width:100%;text-align:left;padding:10px 4px;min-height:68px;box-shadow:inset 0 -1px 0 var(--line)}
+.lrow .th{width:48px;height:48px;border-radius:10px;overflow:hidden;flex:none;position:relative;background:var(--soft)}
+.lrow .th .t{border-radius:0}
+.lrow .th .t .art *{font-size:6px!important}
+.lrow .fo{width:48px;height:48px;border-radius:10px;flex:none;display:grid;place-items:center;background:var(--tint);color:var(--b-ink)}
+.lrow .tx{flex:1;min-width:0}
+.lrow .tx b{display:block;font-size:15px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.lrow .tx small{font-size:13px;color:var(--ink3)}
 .list{border-radius:14px;background:#fff}
 .row{display:flex;align-items:center;gap:14px;width:100%;text-align:left;padding:12px 4px;min-height:72px;box-shadow:inset 0 -1px 0 var(--line)}
-.row:last-child{box-shadow:none}
 .row .tx{flex:1;min-width:0}
 .row .tx b{display:block;font-size:15px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .row .tx small{display:flex;align-items:center;gap:6px;font-size:13px;color:var(--ink3);margin-top:3px}
@@ -103,57 +149,39 @@ h1{font-family:"Funnel Display",Inter,sans-serif;font-size:32px;font-weight:700;
 .pg i:first-child{width:70%;background:var(--ink2)}
 .pg em{position:absolute;left:0;right:0;bottom:0;height:16px;font:700 9px/16px Inter;text-align:center;color:#fff;font-style:normal}
 .f-pdf em{background:#E5484D}.f-doc em{background:#2E6BE6}.f-xls em{background:#1F9254}.f-gdoc em{background:#4285F4}
-.lk{width:58px;height:58px;border-radius:10px;flex:none;background:var(--soft);display:grid;place-items:center;overflow:hidden;position:relative}
-.lk img{width:26px;height:26px}
-.lk .i{width:26px;height:26px}
-.row .go{color:var(--ink3)}
-/* visionneuse */
-.vw{position:fixed;inset:0;background:#0d0b14;color:#fff;display:none;flex-direction:column;z-index:9}
-.vw.on{display:flex}
-.vw .top{display:flex;align-items:center;gap:12px;padding:14px 16px}
-.vw .top img{width:38px;height:38px;border-radius:50%;object-fit:cover}
-.vw .top .tx{flex:1;min-width:0}
-.vw .top b{display:block;font-size:15px}
-.vw .top small{font-size:13px;color:#b9b6c8}
-.vw .ib{color:#fff}
-.vw .ib:hover{background:rgba(255,255,255,.1)}
-.vw .st{flex:1;display:grid;place-items:center;overflow:hidden}
-.vw .st .t{width:130px;border-radius:4px;transform-origin:center}
-.vw .bot{display:flex;justify-content:center;gap:8px;padding:10px 12px 28px}
-.vw .bot button{flex:0 1 120px;min-height:64px;border-radius:14px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;font-size:13px;font-weight:600}
-.vw .bot button:hover{background:rgba(255,255,255,.08)}
-.vw .bot .i{width:22px;height:22px}
+.lk{width:58px;height:58px;border-radius:10px;flex:none;background:var(--soft);display:grid;place-items:center;overflow:hidden}
+.lk img,.lk .i{width:26px;height:26px}
 .toast{position:fixed;left:50%;bottom:28px;transform:translateX(-50%);background:var(--ink);color:#fff;padding:12px 18px;border-radius:12px;font-size:14px;display:none;z-index:10}
+.menu{position:absolute;margin-top:6px;background:#fff;border-radius:14px;box-shadow:0 8px 30px rgba(27,21,48,.16);padding:6px;z-index:5;width:240px;display:none}
+.menu.on{display:block}
+.menu button{display:flex;align-items:center;gap:10px;width:100%;padding:8px 10px;border-radius:10px;font-size:14px;text-align:left}
+.menu button:hover{background:var(--soft)}
+.menu img{width:30px;height:30px;border-radius:50%;object-fit:cover}
+.menu small{display:block;font-size:12px;color:var(--ink3)}
 @media (max-width:640px){
   .wrap{padding:10px 0 60px}
-  .back,.hd,.seg,.who,.grp h2,.list{margin-left:16px;margin-right:16px}
+  .back,.hd,.grp h2{margin-left:16px;margin-right:16px}
   h1{font-size:26px}
-  .seg{width:auto;display:flex}.seg button{flex:1;padding:0 8px}
   .grid{grid-template-columns:repeat(3,1fr);gap:2px}
-  .t{border-radius:0}
-  .grp{margin-top:20px}
+  .grid .t{border-radius:0}
+  .tb.tous .sf b{display:none}.tb.tous .sf{flex:none;width:44px;padding:0;justify-content:center}
+  .ddw{flex:1;min-width:0}.tb .dd{width:100%}
+  .dd span.lb{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;min-width:0;flex:1;text-align:left}
+  .xh,.xt,.tb,.ph2,.pr,.bar2,.crumb,.lst{margin-left:16px;margin-right:16px}
+  .xt{margin:0}
+  .pr{margin-right:0;padding-right:16px}
+  .pc{width:128px}
+  .sort{display:none}
 }
 </style>
 </head>
 <body>
-<div class="wrap">
-  <button class="back" onclick="toast('Retour à l’accueil')"><span class="i" style="--m:url(https://cdn.jsdelivr.net/npm/lucide-static@0.460.0/icons/chevron-left.svg)"></span>Accueil</button>
-  <div class="hd"><h1>Livrables</h1>
-    <button class="ib" aria-label="Rechercher" onclick="toast('Recherche dans les livrables')"><span class="i" style="--m:url(https://cdn.jsdelivr.net/npm/lucide-static@0.460.0/icons/search.svg)"></span></button>
-  </div>
-  <div class="seg" role="tablist">
-    <button role="tab" data-tab="medias" aria-selected="true">Médias<small>15</small></button>
-    <button role="tab" data-tab="docs" aria-selected="false">Docs<small>6</small></button>
-    <button role="tab" data-tab="liens" aria-selected="false">Liens<small>5</small></button>
-  </div>
-  <div class="who" id="who"></div>
-  <div id="body"></div>
-</div>
-<div class="vw" id="vw"></div>
+<div class="wrap" id="app"></div>
 <div class="toast" id="toast"></div>
 <script>
 const IC = n => `<span class="i" style="--m:url(https://cdn.jsdelivr.net/npm/lucide-static@0.460.0/icons/${n}.svg)"></span>`;
 const X = {fatima:"Fatima",koffi:"Koffi",kouassi:"Kouassi",djeneba:"Djénéba",mamadou:"Mamadou",adjoua:"Adjoua"};
+const JOB = {fatima:"Marketing et contenu",koffi:"Design de marque",kouassi:"Commercial",djeneba:"Chief of Staff & Direction",mamadou:"Finance",adjoua:"Ressources humaines"};
 const ph = x => `img/${x}.jpg`;
 const ART = {
  promo:`<div class="art a-promo"><small>UNIFOOD</small><b>Prestige<br>-15 %</b><small>jusqu’au 30/11</small></div>`,
@@ -171,81 +199,99 @@ const ART = {
  aff:`<div class="art a-aff"><b>Salon Agro<br>Abidjan</b></div>`,
  slide2:`<div class="art a-slide"><b>Plan de prospection<br>Lagune</b><i></i><div class="bars"><span style="height:30%"></span><span style="height:45%"></span><span style="height:70%"></span><span style="height:58%"></span></div></div>`,
 };
-const MED = [
- {g:"Cette semaine",x:"fatima",a:"promo",t:"Post Offre Prestige",d:"Aujourd’hui, 09:12",nw:1},
- {g:"Cette semaine",x:"koffi",a:"aff",t:"Affiche Salon Agro",d:"Aujourd’hui",busy:1},
- {g:"Cette semaine",x:"fatima",a:"vid",t:"Vidéo coulisses de l’usine",d:"Hier, 17:40",v:"0:42",nw:1},
- {g:"Cette semaine",x:"kouassi",a:"slide",t:"Bilan commercial octobre",d:"Hier, 11:05",s:"14"},
- {g:"Cette semaine",x:"fatima",a:"cream",t:"Carrousel 3 recettes",d:"Jeudi",s:"5"},
- {g:"Cette semaine",x:"fatima",a:"cal",t:"Calendrier des posts",d:"Mercredi"},
- {g:"Novembre",x:"fatima",a:"story",t:"Story nouveau format 5 kg",d:"8 nov."},
- {g:"Novembre",x:"mamadou",a:"line",t:"Trésorerie 13 semaines",d:"7 nov."},
- {g:"Novembre",x:"fatima",a:"vid2",t:"Témoignage client",d:"6 nov.",v:"1:05"},
- {g:"Novembre",x:"koffi",a:"pack",t:"Maquette emballage",d:"5 nov."},
- {g:"Novembre",x:"adjoua",a:"li",t:"Annonce LinkedIn",d:"4 nov."},
- {g:"Novembre",x:"djeneba",a:"org",t:"Organigramme",d:"3 nov."},
- {g:"Octobre",x:"kouassi",a:"slide2",t:"Plan de prospection Lagune",d:"29 oct.",s:"9"},
- {g:"Octobre",x:"fatima",a:"promo2",t:"Post Fête des mères",d:"24 oct."},
- {g:"Octobre",x:"koffi",a:"aff",t:"Affiche dégustation",d:"20 oct."},
+ART.promo2=`<div class="art a-promo" style="background:#F7C948;color:#5a1630"><small>UNIFOOD</small><b>Bonne fête<br>maman</b><small>-10 % sur le riz</small></div>`;
+ART.promo=ART.promo.replace('<span class="bag"></span>','');
+// p = projet (dossier), k = médias | docs | liens
+const L = [
+ {k:"medias",p:"Offre Prestige",g:"Cette semaine",x:"fatima",a:"promo",t:"Post Offre Prestige",d:"Aujourd’hui",nw:1},
+ {k:"medias",p:"Salon Agro",g:"Cette semaine",x:"koffi",a:"aff",t:"Affiche Salon Agro",d:"Aujourd’hui",busy:1},
+ {k:"medias",p:"Coulisses de l’usine",g:"Cette semaine",x:"fatima",a:"vid",t:"Vidéo coulisses de l’usine",d:"Hier",v:"0:42",nw:1},
+ {k:"medias",p:"Bilan octobre",g:"Cette semaine",x:"kouassi",a:"slide",t:"Bilan commercial octobre",d:"Hier",s:"14"},
+ {k:"medias",p:"Recettes au riz",g:"Cette semaine",x:"fatima",a:"cream",t:"Carrousel 3 recettes",d:"Jeudi",s:"5"},
+ {k:"medias",p:"Offre Prestige",g:"Cette semaine",x:"fatima",a:"cal",t:"Calendrier des posts",d:"Mercredi"},
+ {k:"medias",p:"Offre Prestige",g:"Novembre",x:"fatima",a:"story",t:"Story nouveau format 5 kg",d:"8 nov."},
+ {k:"medias",p:"Trésorerie",g:"Novembre",x:"mamadou",a:"line",t:"Trésorerie 13 semaines",d:"7 nov."},
+ {k:"medias",p:"Recettes au riz",g:"Novembre",x:"fatima",a:"vid2",t:"Témoignage client",d:"6 nov.",v:"1:05"},
+ {k:"medias",p:"Salon Agro",g:"Novembre",x:"koffi",a:"pack",t:"Maquette emballage",d:"5 nov."},
+ {k:"medias",p:"Recrutement logistique",g:"Novembre",x:"adjoua",a:"li",t:"Annonce LinkedIn",d:"4 nov."},
+ {k:"medias",p:"Comité de direction",g:"Novembre",x:"djeneba",a:"org",t:"Organigramme",d:"3 nov."},
+ {k:"medias",p:"Prospection Lagune",g:"Octobre",x:"kouassi",a:"slide2",t:"Plan de prospection Lagune",d:"29 oct.",s:"9"},
+ {k:"medias",p:"Fête des mères",g:"Octobre",x:"fatima",a:"promo2",t:"Post Fête des mères",d:"24 oct."},
+ {k:"medias",p:"Fête des mères",g:"Octobre",x:"fatima",a:"cream",t:"Recette du dimanche",d:"22 oct."},
+ {k:"docs",p:"Comité de direction",g:"Cette semaine",x:"djeneba",f:"pdf",t:"Rapport mensuel novembre",m:"PDF, 8 pages",d:"Aujourd’hui",nw:1},
+ {k:"docs",p:"Offre Prestige",g:"Cette semaine",x:"fatima",f:"doc",t:"Brief de l’offre Prestige",m:"Word, 3 pages",d:"Hier"},
+ {k:"docs",p:"Prospection Lagune",g:"Cette semaine",x:"kouassi",f:"doc",t:"Proposition commerciale Lagune Distribution",m:"Word, 6 pages",d:"Hier"},
+ {k:"docs",p:"Trésorerie",g:"Cette semaine",x:"mamadou",f:"xls",t:"Prévisionnel de trésorerie T1",m:"Excel, 3 onglets",d:"Mercredi"},
+ {k:"docs",p:"Offre Prestige",g:"Novembre",x:"fatima",f:"xls",t:"Résultats des posts d’octobre",m:"Excel, 2 onglets",d:"5 nov."},
+ {k:"docs",p:"Recrutement logistique",g:"Novembre",x:"adjoua",f:"pdf",t:"Fiche de poste Responsable logistique",m:"PDF, 2 pages",d:"4 nov."},
+ {k:"liens",p:"Bilan octobre",g:"Cette semaine",x:"kouassi",ic:"presentation",col:"#F4B400",t:"Bilan commercial octobre",m:"Google Slides",d:"Hier",nw:1},
+ {k:"liens",p:"Offre Prestige",g:"Cette semaine",x:"fatima",dom:"canva.com",t:"Visuels Offre Prestige",m:"Canva",d:"Jeudi"},
+ {k:"liens",p:"Trésorerie",g:"Novembre",x:"mamadou",ic:"sheet",col:"#1E8E3E",t:"Suivi des encaissements",m:"Google Sheets",d:"7 nov."},
+ {k:"liens",p:"Recettes au riz",g:"Novembre",x:"fatima",dom:"instagram.com",t:"Carrousel publié sur Instagram",m:"Instagram",d:"6 nov."},
 ];
-const DOCS = [
- {g:"Cette semaine",x:"djeneba",f:"pdf",t:"Rapport mensuel novembre",m:"PDF, 8 pages",d:"Aujourd’hui",nw:1},
- {g:"Cette semaine",x:"kouassi",f:"doc",t:"Proposition commerciale Lagune Distribution",m:"Word, 6 pages",d:"Hier"},
- {g:"Cette semaine",x:"mamadou",f:"xls",t:"Prévisionnel de trésorerie T1",m:"Excel, 3 onglets",d:"Mercredi"},
- {g:"Novembre",x:"adjoua",f:"pdf",t:"Fiche de poste Responsable logistique",m:"PDF, 2 pages",d:"4 nov."},
- {g:"Novembre",x:"djeneba",f:"gdoc",t:"Compte rendu du comité de direction",m:"Google Docs",d:"3 nov."},
- {g:"Octobre",x:"kouassi",f:"pdf",t:"Contrat type distributeur",m:"PDF, 11 pages",d:"27 oct."},
-];
-const LINKS = [
- {g:"Cette semaine",x:"kouassi",dom:"docs.google.com",ic:"presentation",col:"#F4B400",t:"Bilan commercial octobre",m:"Google Slides",d:"Hier",nw:1},
- {g:"Cette semaine",x:"fatima",dom:"canva.com",t:"Visuels Offre Prestige",m:"Canva",d:"Jeudi"},
- {g:"Novembre",x:"mamadou",dom:"docs.google.com",ic:"sheet",col:"#1E8E3E",t:"Suivi des encaissements",m:"Google Sheets",d:"7 nov."},
- {g:"Novembre",x:"adjoua",dom:"linkedin.com",t:"Annonce Responsable logistique publiée",m:"LinkedIn",d:"4 nov."},
- {g:"Octobre",x:"djeneba",dom:"drive.google.com",ic:"folder",col:"#4285F4",t:"Dossier Codir octobre",m:"Google Drive",d:"30 oct."},
-];
-let tab="medias", who="all";
-const who_ = () => ["all",...Object.keys(X)];
-function renderWho(){
-  document.getElementById("who").innerHTML = who_().map(k=>`<button aria-pressed="${who===k}" data-who="${k}"><span class="ph">${k==="all"?`<span>${IC("users")}</span>`:`<img src="${ph(k)}" alt="">`}</span>${k==="all"?"Tous":X[k]}</button>`).join("");
+const q=new URLSearchParams(location.search);
+const S={page:q.get("page")||"expert", who:q.get("who")||"fatima", mode:q.get("mode")||"galerie", tab:q.get("tab")||"medias", proj:q.get("proj")||null, nw:false};
+if(S.page==="tous") S.who=q.get("who")||"all";
+const scope = () => L.filter(v=>(S.who==="all"||v.x===S.who) && (!S.proj||v.p===S.proj) && (!S.nw||v.nw));
+const groups = arr => { const o={}; arr.forEach(v=>(o[v.g]=o[v.g]||[]).push(v)); return Object.entries(o); };
+function tile(v,mini){
+  if(mini) return `<span class="t" style="display:block;width:100%;height:100%">${ART[v.a]}</span>`;
+  return `<button class="t" aria-label="${v.t}" onclick="toast('${v.busy?X[v.x]+' y travaille encore':'Ouverture de « '+v.t.replace(/'/g,'’')+' »'}')">${ART[v.a]}${!mini&&(v.v||v.s)?'<span class="ov"></span>':''}
+   ${!mini&&v.v?`<span class="play">${IC("play")}</span><span class="meta">${IC("video")}${v.v}</span>`:!mini&&v.s?`<span class="meta">${IC("gallery-horizontal-end")}${v.s}</span>`:""}
+   ${!mini&&S.who==="all"?`<img class="by" src="${ph(v.x)}" alt="">`:""}${!mini&&v.nw?'<span class="nw"></span>':""}
+   ${v.busy&&!mini?`<span class="busy"><span class="spin"></span>En préparation</span>`:""}</button>`;
 }
-const groups = arr => { const o={}; arr.forEach((v,i)=>{(o[v.g]=o[v.g]||[]).push([v,i])}); return Object.entries(o); };
-function tile(v,i){
-  return `<button class="t" data-open="${i}" aria-label="${v.t}">${ART[v.a]}${(v.v||v.s)?'<span class="ov"></span>':''}
-   ${v.v?`<span class="play">${IC("play")}</span>`:""}${v.v?`<span class="meta">${IC("video")}${v.v}</span>`:v.s?`<span class="meta">${IC("gallery-horizontal-end")}${v.s}</span>`:""}
-   ${who==="all"?`<img class="by" src="${ph(v.x)}" alt="">`:""}${v.nw?'<span class="nw"></span>':""}
-   ${v.busy?`<span class="busy"><span class="spin"></span>En préparation</span>`:""}</button>`;
+function projects(){
+  const o={}; L.filter(v=>S.who==="all"||v.x===S.who).forEach(v=>{(o[v.p]=o[v.p]||[]).push(v)});
+  return Object.entries(o);
 }
+function docRow(v){return `<button class="row" onclick="toast('Aperçu : ${v.t.replace(/'/g,"’")}')"><span class="pg f-${v.f}"><i></i><i></i><i></i><i></i><i style="width:60%"></i><em>${{pdf:"PDF",doc:"DOCX",xls:"XLSX"}[v.f]}</em></span><span class="tx"><b>${v.t}</b><small>${S.who==="all"?`<img src="${ph(v.x)}" alt="">${X[v.x]}, `:""}${v.m}, ${v.d}</small></span>${v.nw?'<span style="width:10px;height:10px;border-radius:50%;background:var(--b)"></span>':''}</button>`}
+function linkRow(v){return `<button class="row" onclick="toast('Ouverture du lien')"><span class="lk" ${v.ic?`style="background:${v.col};color:#fff"`:""}>${v.ic?IC(v.ic):`<img src="https://www.google.com/s2/favicons?domain=${v.dom}&sz=64" alt="">`}</span><span class="tx"><b>${v.t}</b><small>${S.who==="all"?`<img src="${ph(v.x)}" alt="">${X[v.x]}, `:""}${v.m}, ${v.d}</small></span><span style="color:var(--ink3)">${IC("external-link")}</span></button>`}
 function render(){
-  renderWho();
-  const f = a => a.filter(v=>who==="all"||v.x===who);
-  const N={medias:f(MED).length,docs:f(DOCS).length,liens:f(LINKS).length};
-  document.querySelectorAll(".seg button").forEach(b=>{b.setAttribute("aria-selected",b.dataset.tab===tab);b.querySelector("small").textContent=N[b.dataset.tab]});
+  const sc=scope(); const N={medias:0,docs:0,liens:0}; sc.forEach(v=>N[v.k]++);
   let h="";
-  if(tab==="medias") h = groups(f(MED)).map(([g,l])=>`<section class="grp"><h2>${g}</h2><div class="grid">${l.map(([v])=>tile(v,MED.indexOf(v))).join("")}</div></section>`).join("");
-  if(tab==="docs") h = groups(f(DOCS)).map(([g,l])=>`<section class="grp"><h2>${g}</h2><div class="list">${l.map(([v])=>`<button class="row" onclick="toast('Aperçu : ${v.t.replace(/'/g,"’")}')"><span class="pg f-${v.f}"><i></i><i></i><i></i><i></i><i style="width:60%"></i><em>${{pdf:"PDF",doc:"DOCX",xls:"XLSX",gdoc:"DOCS"}[v.f]}</em></span><span class="tx"><b>${v.t}</b><small><img src="${ph(v.x)}" alt="">${X[v.x]}, ${v.m}, ${v.d}</small></span>${v.nw?'<span class="nw" style="width:10px;height:10px;border-radius:50%;background:var(--b)"></span>':''}</button>`).join("")}</div></section>`).join("");
-  if(tab==="liens") h = groups(f(LINKS)).map(([g,l])=>`<section class="grp"><h2>${g}</h2><div class="list">${l.map(([v])=>`<button class="row" onclick="toast('Ouverture de ${v.dom}')"><span class="lk" ${v.ic?`style="background:${v.col};color:#fff"`:""}>${v.ic?IC(v.ic):`<img src="https://www.google.com/s2/favicons?domain=${v.dom}&sz=64" alt="">`}</span><span class="tx"><b>${v.t}</b><small><img src="${ph(v.x)}" alt="">${X[v.x]}, ${v.m}, ${v.d}</small></span><span class="go">${IC("external-link")}</span></button>`).join("")}</div></section>`).join("");
-  if(!h) h=`<p style="text-align:center;color:var(--ink3);padding:60px 16px;font-size:14px">Pas encore de livrable ici.</p>`;
-  document.getElementById("body").innerHTML=h;
-}
-function openV(i){
-  const v=MED[i], vw=document.getElementById("vw");
-  vw.innerHTML=`<div class="top"><button class="ib" data-close aria-label="Fermer">${IC("arrow-left")}</button><img src="${ph(v.x)}" alt=""><span class="tx"><b>${v.t}</b><small>${X[v.x]}, ${v.d}</small></span><button class="ib" aria-label="Plus" onclick="toast('Renommer, déplacer, supprimer')">${IC("ellipsis-vertical")}</button></div>
-   <div class="st"><div class="t" style="pointer-events:none">${ART[v.a]}</div></div>
-   <div class="bot"><button onclick="toast('Téléchargement lancé')">${IC("download")}Télécharger</button><button onclick="toast('Envoyer à…')">${IC("send")}Envoyer</button><button onclick="toast('Ouverture de la conversation avec ${X[v.x]}')">${IC("message-circle")}Conversation</button></div>`;
-  vw.classList.add("on");
-  const st=vw.querySelector(".st"), t=st.querySelector(".t"); t.style.transform=`scale(${Math.min(st.clientWidth,st.clientHeight*.92,720)/130})`;
+  if(S.page==="expert"){
+    h+=`<div class="xh"><img src="${ph(S.who)}" alt=""><span><b>${X[S.who]}</b><small>${S.who}@unifood.yelema.ai</small></span></div>
+     <div class="xt">${["Discussion","Livrables","Appels","E-mails","Routines"].map(t=>`<span class="${t==="Livrables"?"on":""}">${t}</span>`).join("")}</div>`;
+  } else {
+    h+=`<button class="back" onclick="toast('Retour à l’accueil')">${IC("chevron-left")}Accueil</button><div class="hd"><h1>Livrables</h1></div>`;
+  }
+  h+=`<div class="tb ${S.page}">${S.page==="tous"?`<div class="ddw" style="position:relative"><button class="dd" id="ddb">${S.who==="all"?`<span class="st">${["fatima","koffi","kouassi"].map(k=>`<img src="${ph(k)}" alt="">`).join("")}</span><span class="lb">Tous les Experts</span>`:`<span class="st"><img src="${ph(S.who)}" alt=""></span><span class="lb">${X[S.who]}</span>`}${IC("chevron-down")}</button>
+      <div class="menu" id="menu"><button data-who="all">${IC("users")}Tous les Experts</button>${Object.keys(X).map(k=>`<button data-who="${k}"><img src="${ph(k)}" alt=""><span>${X[k]}<small>${JOB[k]}</small></span></button>`).join("")}</div></div>`:""}
+    <span class="sf">${IC("search")}<b style="font-weight:400">Rechercher</b></span>
+    <button class="sort">Plus récent ${IC("chevron-down")}</button>
+    <span class="tg"><button aria-pressed="${S.mode==="galerie"}" data-mode="galerie" aria-label="Galerie">${IC("layout-grid")}</button><button aria-pressed="${S.mode==="liste"}" data-mode="liste" aria-label="Liste">${IC("list")}</button></span></div>`;
+  if(S.proj){
+    h+=`<div class="crumb"><button data-proj="">${IC("chevron-left")}Livrables</button><span style="color:var(--ink3)">${IC("chevron-right")}</span><b>${S.proj}</b></div>`;
+  } else {
+    const P=projects();
+    h+=`<div class="ph2"><h2>Projets</h2><small>${P.length}</small></div><div class="pr">${P.map(([p,l])=>{const nw=l.filter(v=>v.nw).length;const m=l.filter(v=>v.k==="medias")[0];
+      return `<button class="pc" data-proj="${p}"><span class="mo">${m?`<span class="t" style="pointer-events:none">${ART[m.a]}</span>`:`<span class="t" style="display:grid;place-items:center;color:var(--ink3)">${IC("folder")}</span>`}${nw?`<span class="nwb">${nw}</span>`:""}</span><b>${p}</b><small>${S.who==="all"?`<img src="${ph(l[0].x)}" alt="">`:""}${l.length} livrable${l.length>1?"s":""}</small></button>`}).join("")}</div>`;
+  }
+  h+=`<div class="bar2"><div class="seg" role="tablist" style="margin:0">${[["medias","Médias"],["docs","Docs"],["liens","Liens"]].map(([k,n])=>`<button data-tab="${k}" aria-selected="${S.tab===k}">${n}<small>${N[k]}</small></button>`).join("")}</div>
+    <button class="chip" data-nw aria-pressed="${S.nw}">Nouveaux</button></div>`;
+  const cur=sc.filter(v=>v.k===S.tab);
+  if(!cur.length) h+=`<p style="text-align:center;color:var(--ink3);padding:50px 16px;font-size:14px">Rien ici pour l’instant.</p>`;
+  else if(S.mode==="galerie"||S.tab!=="medias"){
+    h+=groups(cur).map(([g,l])=>`<section class="grp"><h2>${g}</h2>${S.tab==="medias"?`<div class="grid">${l.map(v=>tile(v)).join("")}</div>`:`<div class="list lst">${l.map(S.tab==="docs"?docRow:linkRow).join("")}</div>`}</section>`).join("");
+  } else {
+    h+=`<div class="lst" style="margin-top:14px">${cur.map(v=>`<button class="lrow" onclick="toast('Ouverture')"><span class="th">${tile(v,1)}</span><span class="tx"><b>${v.t}</b><small>${S.proj?"":v.p+", "}${v.v?"Vidéo, "+v.v:v.s?v.s+" diapositives":"Image"}, ${v.d}</small></span>${v.nw?'<span style="width:10px;height:10px;border-radius:50%;background:var(--b)"></span>':''}</button>`).join("")}</div>`;
+  }
+  document.getElementById("app").innerHTML=h;
 }
 let tt; function toast(m){const t=document.getElementById("toast");t.textContent=m;t.style.display="block";clearTimeout(tt);tt=setTimeout(()=>t.style.display="none",1800)}
 document.addEventListener("click",e=>{
-  const b=e.target.closest("button"); if(!b) return;
-  if(b.dataset.tab){tab=b.dataset.tab;render()}
-  else if(b.dataset.who){who=b.dataset.who;render()}
-  else if(b.dataset.open){if(!MED[+b.dataset.open].busy)openV(+b.dataset.open);else toast("Koffi y travaille encore")}
-  else if(b.hasAttribute("data-close")) document.getElementById("vw").classList.remove("on");
+  const b=e.target.closest("button"); const m=document.getElementById("menu");
+  if(b&&b.id==="ddb"){m.classList.toggle("on");return}
+  if(!b){m&&m.classList.remove("on");return}
+  if(b.dataset.tab){S.tab=b.dataset.tab;render()}
+  else if(b.dataset.mode){S.mode=b.dataset.mode;render()}
+  else if(b.dataset.proj!==undefined){S.proj=b.dataset.proj||null;render()}
+  else if(b.hasAttribute("data-nw")){S.nw=!S.nw;render()}
+  else if(b.dataset.who){S.who=b.dataset.who;S.proj=null;render()}
+  else if(b.classList.contains("sort")) toast("Plus récent, A à Z");
 });
-addEventListener("keydown",e=>{if(e.key==="Escape")document.getElementById("vw").classList.remove("on")});
-const q=new URLSearchParams(location.search); if(q.get("tab"))tab=q.get("tab"); if(q.get("who"))who=q.get("who");
-render(); if(q.get("vue")) openV(+q.get("vue"));
+render(); if(q.get("menu")) document.getElementById("menu").classList.add("on");
 </script>
 </body>
 </html>
